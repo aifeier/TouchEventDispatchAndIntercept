@@ -52,6 +52,7 @@ public class CustomLinearLayout extends LinearLayout {
         /*对事件拦截，并交给本View的onTouchEvent方法*/
 //        return true;
         /*对事件拦截，和return true一样，并交给本View的onTouchEvent方法*/
+        /*内部做了判断,有子View会传递给子View的事件分发*/
         return super.onInterceptTouchEvent(ev);
     }
 
@@ -64,9 +65,9 @@ public class CustomLinearLayout extends LinearLayout {
         /*不消费/响应事件，该事件不断向上层View的nTouchEvent方法，
         直到某个View的onTouchEvent方法返回True，
         如果到最顶层还没有false，则系统判断同一个事件系列，当前View无法再次接收到事件*/
-        return false;
+//        return false;
         /*不响应事件，结果和false一样*/
         /*如果存在点击事件,还是能响应,内部做了处理*/
-//        return super.onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 }
